@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gerador de senha</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/515f6fd498.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="titulo">Gerar senha aleatoria</h2>
+        <label for="" class="caracter">Quantidade de Caracteres</label>
+        <input class="tamanho" type="number">
+        <input type="text" class="resultado">
+        <p class="copiar"><i class="fa-solid fa-copy"></i></p>
+        <button class="gerar">Gerar Senha</button>
+    </div>
+    <script>
+        var botao = document.querySelector(".gerar");
+        function gerarSenha() {
+            var tamanho = document.querySelector(".tamanho").value;
+            var caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&?";
+            var senha = "";
+
+            for (i = 0; i < tamanho; i++) {
+                senha += caracteres.charAt(Math.round(Math.random() * caracteres.length));
+            }
+            document.querySelector(".resultado").value = senha;
+        }
+
+        botao.addEventListener('click', gerarSenha);
+
+
+        // Obter o elemento "copiar"
+        const copiarElemento = document.querySelector('.copiar');
+
+        // Adicionar um evento de clique ao elemento "copiar"
+        copiarElemento.addEventListener('click', () => {
+            // Obter o elemento "resultado"
+            const resultadoElemento = document.querySelector('.resultado');
+
+            // Selecionar o conteúdo do elemento "resultado"
+            resultadoElemento.select();
+
+            // Copiar o conteúdo selecionado para a área de transferência
+            document.execCommand('copy');
+        });
+
+    </script>
+</body>
+
+</html>
